@@ -13,7 +13,9 @@ iceCreamShop([], 'honey lavender'); // false
 ***********************************************************************/
 
 
-// your code here
+function iceCreamShop(flavors, favorite) {
+
+}
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
