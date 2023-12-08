@@ -57,7 +57,7 @@ function greedyMakeChange(target, coins = [25, 10, 5, 1], result = []) {
   // no tests for greedyMakeChange so make sure to test this on your own
   //const result = [];
   if (target < 0) return null;
-  if (target === 0) return result;
+  if (target === 0) return result.reverse();
 
   for (let coin of coins) {
     if (coin <= target) {
@@ -66,18 +66,39 @@ function greedyMakeChange(target, coins = [25, 10, 5, 1], result = []) {
       return greedyMakeChange(target, coins, result);
     }
   }
-  return result;
+  if (target !== 0) {
+    return null;
+  }
 }
 
-function makeBetterChange(target, coins = [25, 10, 5, 1]) {
-  // your code here
-}
+// function makeBetterChange(target, coins = [25, 10, 5, 1], result = [], best = []) {
+//   if (target === 0) return result;
+
+//   for (let i = coins.length - 1; i >= 0; i--) {
+//     if (coins[i])
+//   }
+
+  // const subsets = (arr, ...ys) => (
+  //   arr.length === 0 ? [ys] : [
+  //     subsets(arr.slice(0, -1), ...ys),
+  //     subsets(arr.slice(0, -1), arr[arr.length - 1], ...ys)
+  //   ].flat()
+  // );
+  // let sets = subsets(coins);
+  // return sets.filter(item => item.reduce((acc, el) => {return acc + el;}, 0) === target);
+
+// }
 
 console.log(greedyMakeChange(21)); // [1, 10, 10]
 console.log(greedyMakeChange(75)); // [25, 25, 25]
 console.log(greedyMakeChange(33, [15, 3])); // [3, 15, 15]
 console.log(greedyMakeChange(34, [15, 3])); // null
 console.log(greedyMakeChange(24, [10, 7, 1])); // [7, 7, 10]
+// console.log(makeBetterChange(21)); // [1, 10, 10]
+// console.log(makeBetterChange(75)); // [25, 25, 25]
+// console.log(makeBetterChange(33, [15, 3])); // [3, 15, 15]
+// console.log(makeBetterChange(34, [15, 3])); // null
+// console.log(makeBetterChange(24, [10, 7, 1])); // [7, 7, 10]
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = makeBetterChange

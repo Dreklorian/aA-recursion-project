@@ -13,29 +13,29 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
   2. For every subset that does not contain 3, there is also a corresponding
      subset that is the same, except it also does contain 3.
 ***********************************************************************/
+//returns nothing
+// function subsets(arr) {
+//   // let sets = [[]];
+//   // let lastInArr = arr[arr.length - 1];
+//   // let lastInSets = sets[sets.length - 1];
+//   // if (lastInArr === lastInSets) return sets; //base case
+//   // arr.forEach((item) => {
+//   //   if (!sets.includes([item])) sets.push([item]);
+//   // });
+//   // return sets;
+//   let results = [[]];
+//   if (arr.length === 0) {
+//     return [];
+//   } else {
+//     arr.forEach((item) => {
+//       results.push(...subsets(arr).concat(item));
+//       arr.unshift();
+//     })
 
-function subsets(arr) {
-  // let sets = [[]];
-  // let lastInArr = arr[arr.length - 1];
-  // let lastInSets = sets[sets.length - 1];
-  // if (lastInArr === lastInSets) return sets; //base case
-  // arr.forEach((item) => {
-  //   if (!sets.includes([item])) sets.push([item]);
-  // });
-  // return sets;
-  let results = [[]];
-  if (arr.length === 0) {
-    return [];
-  } else {
-    arr.forEach((item) => {
-      results.push(...subsets(arr).concat(item));
-      arr.unshift();
-    })
 
-
-  }
-  return results;
-}
+//   }
+//   return results;
+// }
 
 
 //works
@@ -46,12 +46,12 @@ function subsets(arr) {
 //   ].flat()
 // );
 
-// const subsets = (arr, ...ys) => (
-//   arr.length === 0 ? [ys] : [
-//     subsets(arr.slice(0, -1), ...ys),
-//     subsets(arr.slice(0, -1), arr[arr.length - 1], ...ys)
-//   ].flat()
-// );
+const subsets = (arr, ...ys) => (
+  arr.length === 0 ? [ys] : [
+    subsets(arr.slice(0, -1), ...ys),
+    subsets(arr.slice(0, -1), arr[arr.length - 1], ...ys)
+  ].flat()
+);
 
 
 // const subsets = ([x, ...xs], ys = []) =>
